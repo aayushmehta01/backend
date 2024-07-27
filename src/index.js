@@ -1,11 +1,20 @@
 import connectDB from "./db/index.js";
-import dotenv from "dotenv";
+import { app } from "./app.js";
 
-dotenv.config({
-    path: './env'
+
+connectDB()
+.then(()=>{
+    app.get('/', (req, res)=>{
+        res.send('<h1>Backend with Aayush</h1>')
+    })
+
+    app.listen(process.env.PORT || 8000, ()=>{
+        console.log(`Server is running at http://localhost:${process.env.PORT}`)
+    })
 })
-
-connectDB();
+.catch((e)=>{
+    console.log("MONGO_DB connection failed: ", e);
+})
 
 
 // ;(async ()=>{
