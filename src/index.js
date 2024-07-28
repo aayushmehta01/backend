@@ -4,12 +4,8 @@ import { app } from "./app.js";
 
 connectDB()
 .then(()=>{
-    app.get('/', (req, res)=>{
-        res.send('<h1>Backend with Aayush</h1>')
-    })
-
     app.listen(process.env.PORT || 8000, ()=>{
-        console.log(`Server is running at http://localhost:${process.env.PORT}`)
+        console.log(`Server is running at: http://localhost:${process.env.PORT}`)
     })
 })
 .catch((e)=>{
